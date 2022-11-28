@@ -7,8 +7,6 @@
 
 # Use NVIDIA CUDA as base image and run the same installation as in the other packages.
 # The version of cudatoolkit must match those of the base image, see Dockerfile.pytorch
-FROM nvidia/cuda:11.6.2-cudnn8-runtime-ubuntu20.04
-LABEL authors="Christoph Schranz <christoph.schranz@salzburgresearch.at>, Mathematical Michael <consistentbayes@gmail.com>"
 # This is a concatenated Dockerfile, the maintainers of subsequent sections may vary.
 RUN chmod 1777 /tmp && chmod 1777 /var/tmp
 
@@ -19,9 +17,9 @@ RUN chmod 1777 /tmp && chmod 1777 /var/tmp
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 
-# Ubuntu 20.04 (focal)
-# https://hub.docker.com/_/ubuntu/?tab=tags&name=focal
-ARG ROOT_CONTAINER=ubuntu:focal
+# Ubuntu 22.04 (jammy)
+# https://hub.docker.com/_/ubuntu/?tab=tags&name=latest
+ARG ROOT_CONTAINER=ubuntu:latest
 
 
 LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
@@ -29,8 +27,6 @@ ARG NB_USER="jovyan"
 ARG NB_UID="1000"
 ARG NB_GID="100"
 
-# Fix: https://github.com/hadolint/hadolint/wiki/DL4006
-# Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
